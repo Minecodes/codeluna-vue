@@ -1,0 +1,19 @@
+<template>
+  <div class="home">
+    <title>CodeLuna</title>
+    <!--<img alt="Vue logo" src="../assets/logo.png" />-->
+    <HelloWorld msg="Hello Privacy! :D" />
+  </div>
+</template>
+
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
+import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+
+@Options({
+  components: {
+    HelloWorld,
+  },
+})
+export default class Home extends Vue {}
+</script>

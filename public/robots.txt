@@ -1,0 +1,3 @@
+# No Analytics, just a website without ads and other stuff.
+User-agent: *
+Disallow:
