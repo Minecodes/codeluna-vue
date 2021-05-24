@@ -1,26 +1,23 @@
-/**
- * @type {import('@vue/cli-service').ProjectOptions}
- */
- module.exports = {
-    pwa: {
-        themeColor: "#1a1a1a",
-        //name: "CodeLuna",
-        manifestOptions: {
-            name: "CodeLuna",
-            short_name: "Luna"
-        }
-    },
-    devServer: {
-        proxy: {
-          "^/ra": {
-            target: "https://youtu.be/dQw4w9WgXcQ",
-            ws: true,
-            changeOrigin: true
+/** @format */
+
+module.exports = {
+  publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
+  chainWebpack: (config) => {
+    if (config.plugins.has('extract-css')) {
+      const extractCSSPlugin = config.plugin('extract-css');
+      extractCSSPlugin &&
+        extractCSSPlugin.tap(() => [
+          {
+            filename: 'css/[name].css',
+            chunkFilename: 'css/[name].css',
           },
-          "^/ra2": {
-              target: "https://youtu.be/dQw4w9WgXcQ"
-          }
-        }
-      }
-}
-  
+        ]);
+    }
+  },
+  configureWebpack: {
+    output: {
+      filename: 'js/[name].js',
+      chunkFilename: 'js/[name].js',
+    },
+  },
+};
